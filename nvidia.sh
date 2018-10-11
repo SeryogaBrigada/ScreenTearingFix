@@ -1,9 +1,9 @@
 #!/bin/bash
 sudo mkdir /etc/X11/xorg.conf.d
-echo \
-'Section "Device"
+cat << 'EOF' | sudo tee -a /etc/X11/xorg.conf.d/20-nvidia.conf
+Section "Device"
   Identifier "Nvidia"
   Driver     "nvidia"
   Option     "ForceCompositionPipeline" "yes"
-EndSection' | sudo tee --append /etc/X11/xorg.conf.d/20-nvidia.conf
-
+EndSection
+EOF
